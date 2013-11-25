@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "metahash/version"
 
 Gem::Specification.new do |s|
-	s.name 			= "MetaHash"
+	s.name 			= "metahash"
 	s.version 			= MetaHash::VERSION
 	s.platform			= Gem::Platform::RUBY
 	s.license			= "MIT"
