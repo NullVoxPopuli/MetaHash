@@ -134,4 +134,6 @@ class Metadata < Hash
   def to_ary
     self.to_hash.to_a
   end
+
+  alias_method :to_a, :to_ary
 end
