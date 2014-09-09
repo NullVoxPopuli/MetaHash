@@ -1,5 +1,6 @@
 require "metahash/metadata"
 require "metahash/version"
+require 'active_record'
 
 module MetaHash
 
