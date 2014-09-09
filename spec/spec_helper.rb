@@ -2,10 +2,11 @@
 require "rubygems"
 require "bundler/setup"
 require "metahash"
+require "pry-byebug"
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
-Dir[File.dirname(__FILE__) + '/support/*.rb'].each {|file| require file }
-load 'support/schema'
+load File.dirname(__FILE__) + '/support/schema.rb'
+Dir[File.dirname(__FILE__) + '/support/**/*.rb'].each {|file| require file }
 
 
 

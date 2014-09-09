@@ -29,6 +29,10 @@ class Metadata < Hash
   # @raise [ArgumentError] if hash is not a type of Hash or Metadata
   # @param [Hash] hash the structure to convert to Metadata
   def initialize(hash = {})
+    # for maybe instantiating nested hashes that we
+    # aren't yet sure if they are going to have values or not
+    @empty_nested_hashes = []
+
     if hash.is_a?(Metadata)
       # we have nothing to do
       return hash
@@ -64,18 +68,47 @@ class Metadata < Hash
     # check for assignment
     if (key = method_name.to_s).include?("=")
       key = key.chop.to_sym
-      raise ArgumentError.new("Not Allowed. '#{key}' is a reserved method.") if self.methods.include?(key)
-      self[key] = args[0]
+      if not self.valid_key?(key)
+        raise ArgumentError.new("Not Allowed. '#{key}' is a reserved method.")
+      end
+
+      if not @empty_nested_hashes.empty?
+        deepest_metadata = self
+        @empty_nested_hashes.each do |key|
+          deepest_metadata = deepest_metadata[key] = Metadata.new
+        end
+        @empty_nested_hashes = []
+        deepest_metadata[key] = args[0]
+     end
     else
-      (value = self[method_name]) ? value : (self[method_name] = Metadata.new)
+      value = self[method_name]
+      if not value
+        @empty_nested_hashes << method_name.to_sym
+        value = self
+      end
+      value
     end
+
+  end
+
+  # Metdata has indifferent access
+  def [](key)
+    super(key.to_sym)
+  end
+
+  # # Metadata has indifferent access,
+  # # so just say that all the keys are symbols.
+  def []=(key, value)
+    super(key.to_sym, value)
   end
 
   # tests the ability to use this key as a key in a hash
   # @param [Symbol] key
   # @return [Boolean] whether or not this can be used as a hash key
   def valid_key?(key)
-    not self.methods.include?(key)
+    # second parameter says that we are
+    #  looking at private methods as well
+    not self.respond_to?(key, true)
   end
 
   # convert to regular hash, recursively
@@ -94,5 +127,9 @@ class Metadata < Hash
     end
 
     hash
+  end
+
+  def to_ary
+    self.to_hash.to_a
   end
 end

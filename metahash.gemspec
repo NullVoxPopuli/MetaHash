@@ -3,6 +3,7 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "metahash/version"
+require 'active_record'
 
 Gem::Specification.new do |s|
   s.name        = "metahash"
@@ -22,9 +23,10 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
 
+  s.add_runtime_dependency "activerecord", ">= 4.0.0"
   s.add_development_dependency "bundler"
   s.add_development_dependency "rspec"
-  s.add_development_dependency "activerecord"
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "pry-byebug"
 
 end

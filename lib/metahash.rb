@@ -8,7 +8,11 @@ module MetaHash
   # the hash by creating class Metadata < Hash; end
   #
   # @param [Symbol] serialized_field name of the field to convert to Metadata
-  def metadata_field_for(serialized_field)
+  def has_metadata(serialized_field = "metadata")
+    # tell Active Record that the field is going to be JSON
+    # serialized, because JSON > YAML
+    serialize serialized_field, JSON
+
     after_initialize do |record|
       # first check the type of the field
       # proceed if hash, abort if Metadata
@@ -42,6 +46,4 @@ module MetaHash
 
 end
 
-if defined?(ActiveRecord::Base)
-  ActiveRecord::Base.send :extend, MetaHash
-end
+ActiveRecord::Base.send :extend, MetaHash
