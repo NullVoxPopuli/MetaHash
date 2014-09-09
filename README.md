@@ -6,7 +6,6 @@ MetaHash
 [![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 [![Dependency Status](https://gemnasium.com/NullVoxPopuli/MetaHash.svg)](https://gemnasium.com/NullVoxPopuli/MetaHash)
 [![Test Coverage](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/coverage.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
-[![Analytics](https://ga-beacon.appspot.com/UA-54618821-1/your-repo/page-name)](https://github.com/igrigorik/ga-beacon)
 
 
 
@@ -55,3 +54,5 @@ This gem has been tested with Ruby 2.0, and rails 3.2, 4.1
 3. Add Test(s)!
 4. Commit your proposed changes
 5. Submit a pull request
+
+[![Analytics](https://ga-beacon.appspot.com/UA-54618821-1/your-repo/page-name)](https://github.com/igrigorik/ga-beacon)
