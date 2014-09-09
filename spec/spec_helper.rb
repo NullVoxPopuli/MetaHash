@@ -2,7 +2,9 @@
 require "rubygems"
 require "bundler/setup"
 require "metahash"
-require "pry-byebug"
+require "pry-byebug" # binding.pry to debug!
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 load File.dirname(__FILE__) + '/support/schema.rb'
