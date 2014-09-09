@@ -48,7 +48,7 @@ describe Metadata do
 
     describe "to_hash" do
 
-      it "convets to a hash" do
+      it "converts to a hash" do
         expect(m.to_hash).to_not be_kind_of Metadata
       end
 
@@ -125,6 +125,8 @@ describe Metadata do
       m.password_rules.formats.digits.max = 3
       m.password_rules.formats.digits.min = 2
 
+      expect(m.password_rules.formats.digits.min).to eq 2
+      expect(m.password_rules.formats.digits.max).to eq 3
     end
   end
 
