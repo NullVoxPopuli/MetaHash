@@ -2,22 +2,22 @@
 #
 # overrides Hash's method missing, providing the following functionality:
 # 1. Access Nested hashes using the method / attribute syntax
-#     i.e.: h = {}
-#             h.middle.inner == {}
+#   i.e.: h = {}
+#     h.middle.inner == {}
 #
 # 2. Access to values stored in nested hashes via method call syntax
-#     i.e.: h = { middle: { inner: { key: "value" } } }
-#             h.middle.inner.key == "value"
+#   i.e.: h = { middle: { inner: { key: "value" } } }
+#     h.middle.inner.key == "value"
 #
 # 3. Set values for nested hash structures without middle nested hashes
-#     having to be defined
-#     i.e.: h = {}
-#             h.middle.inner = 3
-#             h == { middle: { inner: 3 } }
+#   having to be defined
+#   i.e.: h = {}
+#     h.middle.inner = 3
+#     h == { middle: { inner: 3 } }
 #
 # 4. Old hash square bracket access still works
-#     i.e.: h = { inner: { key: "value" } }
-#             h[:inner][:key] == "value"
+#   i.e.: h = { inner: { key: "value" } }
+#     h[:inner][:key] == "value"
 #
 class Metadata < Hash
 
