@@ -2,7 +2,6 @@ MetaHash
 ========
 
 [![](https://ci.solanolabs.com:443/TinderBox/MetaHash/badges/110842.png?badge_token=a5097ea0ff487d291e94285ed9e4c8fabeca5fd1)](https://ci.solanolabs.com:443/TinderBox/MetaHash/suites/110842)
-
 [![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 
 Provides a subclass of Hash and a wrapper around Rails' serialize attribute for object-like access to hashes without validating existence of nested hashes
