@@ -4,7 +4,6 @@ require "bundler/setup"
 require "metahash"
 require "pry-byebug" # binding.pry to debug!
 require "codeclimate-test-reporter"
-require "awesome_print"
 CodeClimate::TestReporter.start
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
