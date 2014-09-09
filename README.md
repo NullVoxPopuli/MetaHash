@@ -28,16 +28,20 @@ Provides a subclass of Hash and a wrapper around Rails' serialize attribute for 
 
 #### In your Gemfile
 
-    gem "metahash", github: "TinderBox/MetaHash"
+    gem "metahash-rb"
 
 #### in your ActiveRecord model
 
-    metadata_field_for :field_name
+    has_metadata
+
+or
+
+    has_metadata :field_not_called_metadata
 
 
 ## Support
 
-This gem has been tested with Ruby 2.0, and rails 3.2
+This gem has been tested with Ruby 2.0, and rails 3.2, 4.1
 
 
 ## Contributing

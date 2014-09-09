@@ -5,7 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "metahash/version"
 
 Gem::Specification.new do |s|
-  s.name        = "metahash"
+  s.name        = "metahash-rb"
   s.version     = MetaHash::VERSION
   s.platform    = Gem::Platform::RUBY
   s.license     = "MIT"
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
 
-  s.add_runtime_dependency "activerecord", ">= 4.0.0"
+  s.add_runtime_dependency "activerecord", ">= 3.0.0"
   s.add_development_dependency "bundler"
   s.add_development_dependency "rspec"
   s.add_development_dependency "sqlite3"
