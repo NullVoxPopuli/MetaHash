@@ -1,3 +1,4 @@
+require "metahash/metaclass"
 require "metahash/metadata"
 require "metahash/version"
 require 'active_record'
@@ -9,10 +10,10 @@ module MetaHash
   # the hash by creating class Metadata < Hash; end
   #
   # @param [Symbol] serialized_field name of the field to convert to Metadata
-  def has_metadata(serialized_field = "metadata")
+  def has_metadata(serialized_field = "metadata", serializer: JSON)
     # tell Active Record that the field is going to be JSON
     # serialized, because JSON > YAML
-    serialize serialized_field, JSON
+    serialize serialized_field, serializer
 
     after_initialize do |record|
       # first check the type of the field

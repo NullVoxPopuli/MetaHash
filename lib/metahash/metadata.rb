@@ -20,6 +20,10 @@
 #     h[:inner][:key] == "value"
 #
 class Metadata < Hash
+  include Metaclass
+  # in the event we are overriding a method, have a way to
+  # get back to the original
+  METHOD_BACKUP_KEY = "metadata_original_"
 
   # the hash being passed in will have all its subhashes converted to
   # metadata hashes.
@@ -39,9 +43,6 @@ class Metadata < Hash
     elsif hash.is_a?(Hash)
       # recursively create nested metadata objects
       hash.each do |key, value|
-        if not valid_key?(key)
-          raise ArgumentError.new("Not Allowed. '#{key}' is a reserved method.")
-        end
 
         self[key] = (
           if value.is_a?(Hash)
@@ -68,18 +69,21 @@ class Metadata < Hash
     # check for assignment
     if (key = method_name.to_s).include?("=")
       key = key.chop.to_sym
-      if not self.valid_key?(key)
-        raise ArgumentError.new("Not Allowed. '#{key}' is a reserved method.")
-      end
 
+      deepest_metadata = self
       if not @empty_nested_hashes.empty?
-        deepest_metadata = self
         @empty_nested_hashes.each do |key|
           deepest_metadata = deepest_metadata[key] = Metadata.new
         end
         @empty_nested_hashes = []
         deepest_metadata[key] = args[0]
-     end
+        # override any existing method with the key
+        deepest_metadata.meta_def(key){ self[key]}
+      else
+        self[key] = args[0]
+        # override any existing method with the key
+        self.meta_def(key){ args[0] }
+      end
     else
       value = self[method_name]
       if not value
@@ -106,9 +110,7 @@ class Metadata < Hash
   # @param [Symbol] key
   # @return [Boolean] whether or not this can be used as a hash key
   def valid_key?(key)
-    # second parameter says that we are
-    #  looking at private methods as well
-    not self.respond_to?(key, true)
+    not self.respond_to?(key)
   end
 
   # convert to regular hash, recursively

@@ -31,7 +31,7 @@ Provides a subclass of Hash and a wrapper around Rails' serialize attribute for 
 
 #### In your Gemfile
 
-    gem "metahash-rb"
+    gem "metahash-rb", require: "metahash"
 
 #### in your ActiveRecord model
 
