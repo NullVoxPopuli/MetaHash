@@ -80,7 +80,7 @@ describe Metadata do
           FROM proposals
         ").last
         p = db["metadata"]
-        YAML.load(p).should == YAML.load(h.to_yaml)
+        JSON.load(p).should == JSON.load(h.to_json)
       else
         pending("Rails not present")
       end
