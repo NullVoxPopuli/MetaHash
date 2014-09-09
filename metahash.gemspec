@@ -10,9 +10,9 @@ Gem::Specification.new do |s|
   s.version     = MetaHash::VERSION
   s.platform    = Gem::Platform::RUBY
   s.license     = "MIT"
-  s.authors     = ["L. Preston Sego III", "TinderBox"]
+  s.authors     = ["L. Preston Sego III"]
   s.email       = "preston.sego@gettinderbox.com"
-  s.homepage    = "https://github.com/TinderBox/MetaHash"
+  s.homepage    = "https://github.com/NullVoxPopuli/MetaHash"
   s.summary     = "MetaHash-#{MetaHash::VERSION}"
   s.description = "Provides a subclass of Hash and a wrapper around Rails' serialize attribute for object-like access to hashes without validating existence of nested hashes."
 
