@@ -6,6 +6,7 @@ MetaHash
 [![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 [![Dependency Status](https://gemnasium.com/NullVoxPopuli/MetaHash.svg)](https://gemnasium.com/NullVoxPopuli/MetaHash)
 [![Test Coverage](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/coverage.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
+[![Analytics](https://ga-beacon.appspot.com/UA-54618821-1/your-repo/page-name)](https://github.com/igrigorik/ga-beacon)
 
 
 
