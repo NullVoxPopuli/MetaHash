@@ -70,20 +70,7 @@ class Metadata < Hash
     if (key = method_name.to_s).include?("=")
       key = key.chop.to_sym
 
-      deepest_metadata = self
-      if not @empty_nested_hashes.empty?
-        @empty_nested_hashes.each do |key|
-          deepest_metadata = deepest_metadata[key] = Metadata.new
-        end
-        @empty_nested_hashes = []
-        deepest_metadata[key] = args[0]
-        # override any existing method with the key
-        deepest_metadata.meta_def(key){ self[key]}
-      else
-        self[key] = args[0]
-        # override any existing method with the key
-        self.meta_def(key){ args[0] }
-      end
+      assign_value(key, args[0])
     else
       value = self[method_name]
       if not value
@@ -136,4 +123,25 @@ class Metadata < Hash
   end
 
   alias_method :to_a, :to_ary
+
+  private
+
+  def assign_value(key, value)
+    deepest_metadata = self
+
+    if not @empty_nested_hashes.empty?
+      @empty_nested_hashes.each do |key|
+        deepest_metadata = deepest_metadata[key] = Metadata.new
+      end
+
+      @empty_nested_hashes = []
+      deepest_metadata[key] = value
+      # override any existing method with the key
+      deepest_metadata.meta_def(key){ self[key]}
+    else
+      self[key] = value
+      # override any existing method with the key
+      self.meta_def(key){ value }
+    end
+  end
 end
