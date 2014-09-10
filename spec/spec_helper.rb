@@ -1,11 +1,17 @@
 
 require "rubygems"
 require "bundler/setup"
-require "metahash"
+
 require "pry-byebug" # binding.pry to debug!
+
+# Coverage
 require "codeclimate-test-reporter"
 ENV['CODECLIMATE_REPO_TOKEN'] = "1d1b1a31bb3137d986297ad8a1ad5a3a1adbd70f0e8583d7eaf1dd4c0ab0bbe1"
 CodeClimate::TestReporter.start
+
+# This Gem
+require "metahash"
+
 
 ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 load File.dirname(__FILE__) + '/support/schema.rb'
