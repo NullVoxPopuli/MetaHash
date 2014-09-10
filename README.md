@@ -14,13 +14,29 @@ Provides a subclass of Hash and a wrapper around Rails' serialize attribute for 
 #### Access nested hashes using method / object syntax
 
     h = Metadata.new
-    h # => {}
-    h.outer.inner # => {}
+    
+    h 
+    => {}
+    
+    h.outer.inner
+    => {}
+    
+    if (min_numbers = h.password_rules.formats.numbers.minimum).present?
+      # some code using min_numbers
+    else 
+      # data doesn't exist in h
+      
+      h.password_rules.formats.numbers.minimum = 1
+      # h 
+      # => { password_rules: { formats: { numbers: { minimum: 1 } } } }
+    end
 
 #### Access to values stored in nested hashes via method call syntax
 
     h = Metadata.new( { outer: { inner: { hash_key: "value" } } } )
-    h.outer.inner.hash_key # => "value"
+    
+    h.outer.inner.hash_key
+    => "value"
 
 #### Set values for nested hash structures without the nested hashes having to be initially defined
 
