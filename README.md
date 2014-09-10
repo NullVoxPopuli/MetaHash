@@ -2,7 +2,8 @@ MetaHash
 ========
 
 [![Gem Version](https://badge.fury.io/rb/metahash-rb.svg)](http://badge.fury.io/rb/metahash-rb)
-[![Build Status](https://travis-ci.org/NullVoxPopuli/MetaHash.svg)](https://travis-ci.org/NullVoxPopuli/MetaHash)[![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
+[![Build Status](https://travis-ci.org/NullVoxPopuli/MetaHash.svg)](https://travis-ci.org/NullVoxPopuli/MetaHash)
+[![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 [![Dependency Status](https://gemnasium.com/NullVoxPopuli/MetaHash.svg)](https://gemnasium.com/NullVoxPopuli/MetaHash)
 [![Test Coverage](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/coverage.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 
