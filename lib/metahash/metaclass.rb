@@ -21,10 +21,11 @@ module Metaclass
     }
   end
 
+  # unused
   # Defines an instance method within a class
-  def class_def( name, &block )
-    class_eval {
-      define_method( name, &block )
-    }
-  end
+  # def class_def( name, &block )
+  #   class_eval {
+  #     define_method( name, &block )
+  #   }
+  # end
 end
