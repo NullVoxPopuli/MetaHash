@@ -7,3 +7,12 @@ def h
     }
   }
 end
+
+def hash_with_array
+  {
+    array: [
+      { a: 2 },
+      { b: 3 }
+    ]
+  }
+end

@@ -52,6 +52,10 @@ describe Metadata do
         expect(m.to_hash).to_not be_kind_of Metadata
       end
 
+      it "converts arrays" do
+
+      end
+
     end
 
     describe "to_ary or to_a" do
@@ -66,6 +70,23 @@ describe Metadata do
 
       it "copies hash contents" do
         expect(Metadata.new(h)).to eq h
+      end
+
+      it "returns the argument" do
+        m = Metadata.new
+        expect(Metadata.new(m)).to eq m
+      end
+
+      it "creates metadata objects in an array" do
+        h = hash_with_array
+        m = Metadata.new(h)
+
+        expect(m.array.first.a).to eq 2
+        expect(m.array.last.b).to eq 3
+      end
+
+      it "raises an error with invalid input" do
+        expect{Metadata.new(2)}.to raise_error
       end
     end
 
