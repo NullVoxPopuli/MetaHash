@@ -53,7 +53,10 @@ describe Metadata do
       end
 
       it "converts arrays" do
-
+        h = hash_with_array
+        m = Metadata.new(h)
+        expect(m.to_hash).to_not respond_to :array
+        expect(m.to_hash[:array]).to be_a Array
       end
 
     end
