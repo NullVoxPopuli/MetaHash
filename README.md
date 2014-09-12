@@ -17,9 +17,9 @@ Provides a subclass of Hash and a wrapper around Rails' serialize attribute for 
 Arand new Metadata objects act just like hashes:
 
     h = Metadata.new
-    h 
+    h
     => {}
-    
+
 Accessing nested data requires no wrapping conditions checking for existence of the rquested data:
 
     h.outer.inner
@@ -29,18 +29,23 @@ Possible real-word example:
 
     if (min_numbers = h.password_rules.formats.numbers.minimum).present?
       # some code using min_numbers
-    else 
+    else
       # data doesn't exist in h
-      
+
       h.password_rules.formats.numbers.minimum = 1
-      # h 
+      # h
       # => { password_rules: { formats: { numbers: { minimum: 1 } } } }
     end
+
+Convert an existing hash to metadata
+
+    {a: 1}.to_metadata.a
+    # => 1
 
 #### Access to values stored in nested hashes via method call syntax
 
     h = Metadata.new( { outer: { inner: { hash_key: "value" } } } )
-    
+
     h.outer.inner.hash_key
     => "value"
 
@@ -49,7 +54,7 @@ Possible real-word example:
     h = Metadata.new
     h
     => {}
-    
+
     h.outer.inner = 2
     h
     => { outer: { inner: 2 } }
