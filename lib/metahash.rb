@@ -1,5 +1,6 @@
 require "metahash/metaclass"
 require "metahash/metadata"
+require "metahash/extensions/hash/to_metadata"
 require "metahash/version"
 require 'active_record'
 

@@ -32,25 +32,25 @@ class Metadata < Hash
   # @raise [ArgumentError] if one of the keys is method of Hash
   # @raise [ArgumentError] if hash is not a type of Hash or Metadata
   # @param [Hash] hash the structure to convert to Metadata
-  def initialize( hash = {} )
+  def initialize(hash = {})
     # for maybe instantiating nested hashes that we
     # aren't yet sure if they are going to have values or not
     @empty_nested_hashes = []
 
-    if hash.is_a?( Metadata )
+    if hash.is_a?(Metadata)
       # we have nothing to do
       return hash
-    elsif hash.is_a?( Hash )
+    elsif hash.is_a?(Hash)
       # recursively create nested metadata objects
       hash.each do |key, value|
 
         self[ key ] = (
-          if value.is_a?( Hash )
-            Metadata.new( value )
-          elsif value.is_a?( Array )
+          if value.is_a?(Hash)
+            Metadata.new(value)
+          elsif value.is_a?(Array)
             # ensure hashes kept in an array are also converted to metadata
             array = value.map{ |element|
-              element.is_a?( Hash ) ? Metadata.new( element ) : element
+              element.is_a?(Hash) ? Metadata.new(element) : element
             }
           else
             value
@@ -65,14 +65,14 @@ class Metadata < Hash
 
   # this is what allows functionality mentioned in the class comment to happen
   # @raise [ArgumentError] if one of the keys is method of Hash
-  def method_missing( method_name, *args )
+  def method_missing(method_name, *args)
     # check for assignment
-    if ( key = method_name.to_s ).include?( "=" )
+    if (key = method_name.to_s).include?("=")
       key = key.chop.to_sym
 
-      assign_value( key, args[ 0 ] )
+      assign_value(key, args[0])
     else
-      value = self[ method_name ]
+      value = self[method_name]
       if not value
         @empty_nested_hashes << method_name.to_sym
         value = self
@@ -83,32 +83,32 @@ class Metadata < Hash
   end
 
   # Metdata has indifferent access
-  def []( key )
-    super( key.to_sym )
+  def [](key)
+    super(key.to_sym)
   end
 
   # # Metadata has indifferent access,
   # # so just say that all the keys are symbols.
-  def []=( key, value)
-    super( key.to_sym, value )
+  def []=(key, value)
+    super(key.to_sym, value)
   end
 
   # tests the ability to use this key as a key in a hash
   # @param [Symbol] key
   # @return [Boolean] whether or not this can be used as a hash key
-  def valid_key?( key )
-    not self.respond_to?( key )
+  def valid_key?(key)
+    not self.respond_to?(key)
   end
 
   # convert to regular hash, recursively
   def to_hash
     hash = {}
     self.each do |k,v|
-      hash[ k ] = (
-        if v.is_a?( Metadata )
+      hash[k] = (
+        if v.is_a?(Metadata)
           v.to_hash
-        elsif v.is_a?( Array )
-          v.map{ |e| e.is_a?( Metadata ) ? e.to_hash : e }
+        elsif v.is_a?(Array)
+          v.map{ |e| e.is_a?(Metadata) ? e.to_hash : e }
         else
           v
         end
@@ -126,22 +126,22 @@ class Metadata < Hash
 
   private
 
-  def assign_value( key, value )
+  def assign_value(key, value)
     deepest_metadata = self
 
     if not @empty_nested_hashes.empty?
       @empty_nested_hashes.each do |key|
-        deepest_metadata = deepest_metadata[ key ] = Metadata.new
+        deepest_metadata = deepest_metadata[key] = Metadata.new
       end
 
       @empty_nested_hashes = []
-      deepest_metadata[ key ] = value
+      deepest_metadata[key] = value
       # override any existing method with the key
-      deepest_metadata.meta_def( key ){ self[ key ]}
+      deepest_metadata.meta_def(key){ self[key] }
     else
-      self[ key ] = value
+      self[key] = value
       # override any existing method with the key
-      self.meta_def( key ){ value }
+      self.meta_def(key){ value }
     end
   end
 end
