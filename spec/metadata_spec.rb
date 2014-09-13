@@ -33,6 +33,11 @@ describe Metadata do
         expect(m["b"]).to eq 2
       end
 
+      it "converts a hash to metadata" do
+        m[:h] = { a: 2 }
+        expect(m.h).to be_a Metadata
+      end
+
     end
 
     describe "key_not_in_use?" do

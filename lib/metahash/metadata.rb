@@ -20,7 +20,7 @@
 #     h[:inner][:key] == "value"
 #
 class Metadata < Hash
-  include Metaclass
+  include MetaHash::Metaclass
   # in the event we are overriding a method, have a way to
   # get back to the original
   METHOD_BACKUP_KEY = "metadata_original_"
@@ -90,6 +90,9 @@ class Metadata < Hash
   # # Metadata has indifferent access,
   # # so just say that all the keys are symbols.
   def []=(key, value)
+    if value.is_a?(Hash) && !value.is_a?(Metadata)
+      value = Metadata.new(value)
+    end
     super(key.to_sym, value)
   end
 
