@@ -35,14 +35,14 @@ describe Metadata do
 
     end
 
-    describe "valid_key?" do
+    describe "key_not_in_use?" do
 
       it "is true for keys that aren't methods" do
-        expect(m.valid_key?(:b)).to eq true
+        expect(m.key_not_in_use?(:b)).to eq true
       end
 
       it "is false for existing methods" do
-        expect(m.valid_key?(:to_hash)).to eq false
+        expect(m.key_not_in_use?(:to_hash)).to eq false
       end
     end
 
@@ -151,6 +151,23 @@ describe Metadata do
 
       expect(m.password_rules.formats.digits.min).to eq 2
       expect(m.password_rules.formats.digits.max).to eq 3
+    end
+
+    it "handles falsy values" do
+      m.a = false
+      # binding.pry
+      expect(m.a).to eq false
+    end
+
+    it "converts hashes to metadata" do
+      m.a = { sub: 2 }
+      expect(m.a.sub).to eq 2
+    end
+
+    it "allows multiple ways of assigning the same key" do
+      m.a = "1"
+      m[:a] = "2"
+      expect(m.a).to eq "1"
     end
   end
 

@@ -96,7 +96,7 @@ class Metadata < Hash
   # tests the ability to use this key as a key in a hash
   # @param [Symbol] key
   # @return [Boolean] whether or not this can be used as a hash key
-  def valid_key?(key)
+  def key_not_in_use?(key)
     not self.respond_to?(key)
   end
 
@@ -128,6 +128,8 @@ class Metadata < Hash
 
   def assign_value(key, value)
     deepest_metadata = self
+
+    value = Metadata.new(value) if value.is_a?(Hash)
 
     if not @empty_nested_hashes.empty?
       @empty_nested_hashes.each do |key|
