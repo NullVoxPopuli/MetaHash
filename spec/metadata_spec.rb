@@ -127,52 +127,69 @@ describe Metadata do
   context "assigns values" do
     let(:m){Metadata.new}
 
-    it "sets a non-exsiting deep value" do
-      m.a.b = 2
-      expect(m.a.b).to eq 2
-    end
-
-    it "sets with specific keys" do
-      m.a.min = 2
-      m.a.max = 3
-      expect(m.a.min).to eq 2
-      expect(m.a.max).to eq 3
-    end
-
-    it "overrides existing methods if set" do
-      m.keys = 2
-      expect(m.keys).to eq 2
-    end
-
-    it "overrides existing methods if set to non-simple objects" do
-      m.a.b = 2
-      m.a.keys = 3
-      expect(m.a.keys).to eq 3
-    end
-
-    it "can overrid min and max of deeply nested hashes" do
-      m.password_rules.formats.digits.max = 3
-      m.password_rules.formats.digits.min = 2
-
-      expect(m.password_rules.formats.digits.min).to eq 2
-      expect(m.password_rules.formats.digits.max).to eq 3
-    end
-
-    it "handles falsy values" do
-      m.a = false
-      # binding.pry
-      expect(m.a).to eq false
-    end
-
-    it "converts hashes to metadata" do
-      m.a = { sub: 2 }
-      expect(m.a.sub).to eq 2
-    end
 
     it "allows multiple ways of assigning the same key" do
       m.a = "1"
       m[:a] = "2"
       expect(m.a).to eq "1"
+    end
+
+    context "via attribute assignment style" do
+      it "sets a non-exsiting deep value" do
+        m.a.b = 2
+        expect(m.a.b).to eq 2
+      end
+
+      it "sets with specific keys" do
+        m.a.min = 2
+        m.a.max = 3
+        expect(m.a.min).to eq 2
+        expect(m.a.max).to eq 3
+      end
+
+      it "overrides existing methods if set" do
+        m.keys = 2
+        expect(m.keys).to eq 2
+      end
+
+      it "overrides existing methods if set to non-simple objects" do
+        m.a.b = 2
+        m.a.keys = 3
+        expect(m.a.keys).to eq 3
+      end
+
+      it "can overrid min and max of deeply nested hashes" do
+        m.password_rules.formats.digits.max = 3
+        m.password_rules.formats.digits.min = 2
+
+        expect(m.password_rules.formats.digits.min).to eq 2
+        expect(m.password_rules.formats.digits.max).to eq 3
+      end
+
+      it "handles falsy values" do
+        m.a = false
+        expect(m.a).to eq false
+      end
+
+      it "converts hashes to metadata" do
+        m.a = { sub: 2 }
+        expect(m.a.sub).to eq 2
+      end
+    end
+
+    context "via hash style" do
+      it "handels falsy values" do
+        m[:a] = false
+        expect(m[:a]).to eq false
+        expect(m.a).to eq false
+      end
+
+      it "sets a non-existing deep value" do
+        pending "not yet supported"
+        m[:a][:b] = 2
+        expect(m[:a][:b]).to eq 2
+        expect(m.a.b).to eq 2
+      end
     end
   end
 

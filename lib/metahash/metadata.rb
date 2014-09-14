@@ -67,14 +67,12 @@ class Metadata < Hash
   # @raise [ArgumentError] if one of the keys is method of Hash
   def method_missing(method_name, *args)
     # check for assignment
-    if (key = method_name.to_s).include?("=")
-      key = key.chop.to_sym
-
-      assign_value(key, args[0])
+    if method_name.to_s[-1] == "="
+      assign_value(method_name, args[0])
     else
       value = self[method_name]
-      if not value
-        @empty_nested_hashes << method_name.to_sym
+      if value.nil?
+        @empty_nested_hashes << method_name
         value = self
       end
       value
@@ -84,6 +82,7 @@ class Metadata < Hash
 
   # Metdata has indifferent access
   def [](key)
+    # self.send(key)
     super(key.to_sym)
   end
 
@@ -129,7 +128,9 @@ class Metadata < Hash
 
   private
 
+  # @param [Symbol] key "field_name=""
   def assign_value(key, value)
+    key = key.to_s.chop
     deepest_metadata = self
 
     value = Metadata.new(value) if value.is_a?(Hash)
