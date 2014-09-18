@@ -23,6 +23,8 @@ Gem::Specification.new do |s|
 
 
   s.add_runtime_dependency "activerecord", ">= 3.0.0"
+  s.add_runtime_dependency "meta_instance"
+
   s.add_development_dependency "bundler"
   s.add_development_dependency "rspec"
   s.add_development_dependency "sqlite3"

@@ -1,11 +1,10 @@
-require "metahash/metaclass"
+require "meta_instance"
 require "metahash/metadata"
 require "metahash/extensions/hash/to_metadata"
 require "metahash/version"
 require 'active_record'
 
 module MetaHash
-
   # When an active record object is loaded, convert to Metadata.
   # If for whatever reason we lose this Metadata class, we can read
   # the hash by creating class Metadata < Hash; end

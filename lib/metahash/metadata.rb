@@ -20,7 +20,7 @@
 #     h[:inner][:key] == "value"
 #
 class Metadata < Hash
-  include MetaHash::Metaclass
+  include ::MetaInstance
   # in the event we are overriding a method, have a way to
   # get back to the original
   METHOD_BACKUP_KEY = "metadata_original_"
@@ -143,11 +143,11 @@ class Metadata < Hash
       @empty_nested_hashes = []
       deepest_metadata[key] = value
       # override any existing method with the key
-      deepest_metadata.meta_def(key){ self[key] }
+      deepest_metadata.instance_define(key){ self[key] }
     else
       self[key] = value
       # override any existing method with the key
-      self.meta_def(key){ value }
+      self.instance_define(key){ value }
     end
   end
 end
