@@ -1,11 +1,11 @@
 MetaHash
 ========
 
-[![Gem Version](https://badge.fury.io/rb/metahash-rb.svg)](http://badge.fury.io/rb/metahash-rb)
-[![Build Status](https://travis-ci.org/NullVoxPopuli/MetaHash.svg)](https://travis-ci.org/NullVoxPopuli/MetaHash)
-[![Code Climate](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/gpa.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
-[![Test Coverage](https://codeclimate.com/github/NullVoxPopuli/MetaHash/badges/coverage.svg)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
-[![Dependency Status](https://gemnasium.com/NullVoxPopuli/MetaHash.svg)](https://gemnasium.com/NullVoxPopuli/MetaHash)
+[![Gem Version](http://img.shields.io/gem/v/metahash-rb.svg?style=flat-square)](http://badge.fury.io/rb/metahash-rb)
+[![Build Status](http://img.shields.io/travis/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://travis-ci.org/NullVoxPopuli/MetaHash)
+[![Code Climate](http://img.shields.io/codeclimate/github/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
+[![Test Coverage](http://img.shields.io/codeclimate/coverage/github/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
+[![Dependency Status](http://img.shields.io/gemnasium/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://gemnasium.com/NullVoxPopuli/MetaHash)
 [![security](https://hakiri.io/github/NullVoxPopuli/MetaHash/master.svg)](https://hakiri.io/github/NullVoxPopuli/MetaHash/master)
 
 
