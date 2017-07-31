@@ -1,3 +1,10 @@
+
+
+# DEPRECATED
+
+Ruby's [OpenStruct](https://ruby-doc.org/stdlib-2.4.1/libdoc/ostruct/rdoc/OpenStruct.html) offers the same functionality.
+
+
 MetaHash
 ========
 
@@ -7,11 +14,6 @@ MetaHash
 [![Test Coverage](http://img.shields.io/codeclimate/coverage/github/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://codeclimate.com/github/NullVoxPopuli/MetaHash)
 [![Dependency Status](http://img.shields.io/gemnasium/NullVoxPopuli/MetaHash.svg?style=flat-square)](https://gemnasium.com/NullVoxPopuli/MetaHash)
 [![security](https://hakiri.io/github/NullVoxPopuli/MetaHash/master.svg)](https://hakiri.io/github/NullVoxPopuli/MetaHash/master)
-
-# DEPRECATED
-
-Ruby's [OpenStruct](https://ruby-doc.org/stdlib-2.4.1/libdoc/ostruct/rdoc/OpenStruct.html) offers the same functionality.
-
 
 Provides a subclass of Hash and a wrapper around Rails' serialize attribute for object-like access to hashes without validating existence of nested hashes
 
